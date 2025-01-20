@@ -1,0 +1,23 @@
+body {
+    background-color: #eaeaea;
+}
+.title {
+    width: 1000px;
+    margin: 10px auto;
+}
+.canvas {
+    margin: 20px auto 50px;
+    width: 1000px;
+}
+#myCanvas {
+    border: 1px solid black;
+}
+.inputContainer {
+    width: 1000px;
+    margin: 0 auto;
+}
+.matrixContainer {
+    padding: 10px;
+}
+
+

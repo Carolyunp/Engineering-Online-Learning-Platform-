@@ -1,0 +1,68 @@
+body {
+    background-color: #eaeaea;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 15px;
+    gap: 15px;
+}
+
+.heading {
+    margin: 10px;
+}
+
+.interactive-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30%;
+    height: 300px;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    overflow: hidden;
+    padding: 10px 0 0 0;
+    background-size: cover;
+    background-position: top center;
+}
+#single-spring {
+    background-image: url('images/single-spring.png');
+}
+#double-spring {
+    background-image: url('images/double-spring.png');
+}
+#beam {
+    background-image: url('images/beam-sim.png');
+}
+
+
+.interactive-box:hover {
+    border-color: #007BFF;
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+.interactive-box h2 {
+    text-align: center;
+    background: rgba(255, 255, 255, 1);
+    width: 100%;
+    padding: 10px 0 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.141);
+}
+
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .interactive-box {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

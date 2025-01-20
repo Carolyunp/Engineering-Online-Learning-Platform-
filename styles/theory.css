@@ -1,0 +1,70 @@
+body {
+    background-color: #eaeaea;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px;
+}
+
+.interactive-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30%;
+    height: 200px;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    overflow: hidden;
+    padding: 10px 0 0 0;
+    background-size: cover;
+    background-position: center center;
+}
+/* #notes {
+    background-image: url('images/notes-preview.png');
+}
+#key-concepts {
+    background-image: url('images/key-concepts-preview.png');
+}
+#formulas {
+    background-image: url('images/formulas-preview.png');
+} */
+.interactive-box p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.interactive-box:hover {
+    border-color: #007BFF;
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+
+h2 {
+    text-align: center;
+    background: rgba(255, 255, 255, 1);
+    width: 100%;
+    padding: 10px 0 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.141);
+}
+
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .interactive-box {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

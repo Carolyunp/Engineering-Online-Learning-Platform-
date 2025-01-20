@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(images/ucl_background.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/* sidebar code */
+.sideBar {
+    position: fixed; 
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sideBar li {
+    list-style: none;
+    padding: 15px 12px;
+    margin: 5px 0;
+    width: 210px;
+    display: flex;
+    transition: 0.5s;
+}
+.sideBar i {
+    list-style: none;
+    padding: 15px 12px;
+    margin: 5px 0;
+}
+.sideBar i:hover {
+    cursor: pointer;
+}
+.sideBar li:hover {
+    background-color:#f443364d;
+}
+.sideBar li a{
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    text-align: left;
+}
+
+/* normal navBar code */
+/* nav {
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+} */
+.navBar {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.navBar li,i {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.navBar li a {
+    color: #fff;
+    text-decoration: none;
+}
+.navBar li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.navBar li:hover::after {
+    width: 100%;
+}
+.navBar i {
+    display: none;
+}
+.navBar i:hover {
+    cursor: pointer;
+}
+
+/* Styling the homepage */
+.text-box {
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 52px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    border: 1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+}
+
+/* phone screenview */
+@media(max-width: 700px) {
+    .text-box h1 {
+        font-size: 20px;
+    }
+    .navBar i {
+        display: flex;
+    }
+    .navBar i:hover {
+        cursor: pointer;
+    }
+    
+    .navBar li {
+        display: none;
+    }
+    .navBar i:hover {
+        cursor: pointer;
+    }
+}
+
+/* -----course---- */
+
+.row a {
+    text-decoration: none;
+}
+
+.course {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.course h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.course p {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+
+.row  {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.course-col {
+    flex: 1 1 30%;
+    background: #fff3f3;
+    border-radius: 10px;
+    padding: 20px 12px;
+    margin: 10px 10px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.course h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+    color:#000000;
+}
+
+.course-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+@media(max-width: 700px){
+    .row {
+        flex-direction: column;
+    }
+}
+
+
+/* ---- footer ---- */
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer h4 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.footer p {
+    font-size: 12px;
+}

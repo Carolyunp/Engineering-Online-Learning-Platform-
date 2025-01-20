@@ -1,0 +1,97 @@
+.title {
+  width: 1000px;
+  margin: 10px auto;
+}
+
+.layout-container {
+    display: flex; /* Enables flexbox layout */
+    width: 1000px; /* Full width of the container */
+    margin: 0 auto;
+    margin-top: 20px; /* Space from any element above, possibly the navbar */
+}
+
+.canvasContainer {
+    margin: 20px 0 20px 100px;
+}
+
+.inputBar {
+    margin: 10px 0;
+    width: 300px; /* Fixed width for inputBar */
+    min-width: 250px;
+    background-color: #f4f4f8; /* Light grey background */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    height: auto; /* Adjust height as needed or keep it to 100vh for full height */
+}
+  /* Generic button styling */
+#inputBar button {
+    background-color: #20244fe1; /* A pleasant blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  /* Hover effect for buttons */
+#inputBar button:hover {
+    background-color: #4a54e1; /* A darker blue on hover */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Elevated shadow effect */
+  }
+  
+  /* Focus styles to enhance accessibility */
+#inputBar button:focus {
+    outline: none;
+    box-shadow: 0 0 3px 3px rgba(81, 203, 238, 1);
+  }
+  
+  /* Active button styling */
+#inputBar button:active {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    background-color: #4048bf;
+  }
+
+.inputBar input {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 7px;
+  margin: 10px 5px;
+}
+
+#inputBar #solveBtn {
+  background-color: #3c963c;
+}
+
+#inputBar #resetBtn {
+  background-color: #acacac;
+}
+
+.selected {
+    background-color: #007BFF; /* Blue background for selected item */
+    color: white; /* White text for contrast */
+    border-color: #0056b3; /* Darker blue border for better visibility */
+}
+
+#messageArea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+}
+
+#errorMessageArea {
+    color: rgb(255, 0, 0);
+    margin: 20px 20px;
+}
+
+#answerArea {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+  

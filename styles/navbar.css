@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    /* padding: 0; */
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #eaeaea;
+}
+
+#backBTN {
+    margin: 10px 40px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+
+/* sidebar code */
+.sideBar {
+    position: fixed; 
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sideBar li {
+    list-style: none;
+    padding: 15px 12px;
+    margin: 5px 0;
+    width: 210px;
+    display: flex;
+    transition: 0.5s;
+}
+.sideBar i {
+    list-style: none;
+    padding: 15px 12px;
+    margin: 5px 0;
+}
+.sideBar i:hover {
+    cursor: pointer;
+}
+.sideBar li:hover {
+    background-color:#f443364d;
+}
+.sideBar li a{
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    text-align: left;
+}
+
+/* normal navBar code */
+.navBar {
+    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(images/navbar.jpg);
+    height: 20px;
+    margin: 0 0;
+    width: 100%;
+    padding: 25px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.navBar li,i {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.navBar li a {
+    color: #fff;
+    text-decoration: none;
+}
+.navBar li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.navBar li:hover::after {
+    width: 100%;
+}
+.navBar i {
+    display: none;
+}
+.navBar i:hover {
+    cursor: pointer;
+}
+
+/* phone screenview */
+@media(max-width: 700px) {
+    .navBar i {
+        display: flex;
+    }
+    .navBar i:hover {
+        cursor: pointer;
+    }
+    
+    .navBar li {
+        display: none;
+    }
+    .navBar i:hover {
+        cursor: pointer;
+    }
+}
