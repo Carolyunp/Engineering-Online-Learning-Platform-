@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introfuction to Elasticity and Finite Element Method</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <ul class="sideBar">
+                <i class="fa-solid fa-xmark fa-lg" style="color: #fff" onclick=closeSideBar() id="cross"></i>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="https://moodle.ucl.ac.uk/mod/forum/view.php?id=5555392" target="_blank">FORUM</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <ul class="navBar">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="https://moodle.ucl.ac.uk/mod/forum/view.php?id=5555392" target="_blank">FORUM</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <i class="fa-solid fa-bars fa-lg" style="color: #fff" onclick=showSideBar() id="bar"></i>
+            </ul>
+        </nav>
+
+    <div class="text-box">
+        <h1>Introduction to the Finite Element Method</h1>
+        <p>Get ready to embark on a journey of discovery, where complex topics become approachable, and you'll leave with a deeper understanding of the structures that surround us.</p>
+        <p>For best use of this application, please use a laptop or pc.</p>
+        <a href="#course" class="hero-btn">Get Started!</a>
+    </div>
+    </section>
+
+    <section class="course" id="course">
+        <h1>What we Offer</h1>
+        <p>Our module offers a comprehensive study of spring and beam elements, two essential concepts in understanding the finite element method. Dive into the theory, discover real-world applications, and gain hands-on experience through interactive simulations and exercises.</p>
+        <div class="row">
+            <div class="course-col">
+                <a href="elasticity.html">
+                    <h3>Elasticity</h3>
+                    <p>This section provides you with the fundamentals of the finite element method. We start from the very basics and summarise the key concepts that you will need for your exam.</p>
+                </a>
+            </div>
+            <div class="course-col">
+                 <a href="finite_element_analysis.html">
+                    <h3>FEA</h3>
+                    <p>Our module offers a comprehensive study of spring and beam elements, two essential concepts in understanding the finite element method. Dive into the theory, discover real-world applications, and gain hands-on experience through interactive simulations and exercises.</p>
+                </a>
+            </div>
+            <div class="course-col">
+                <a href="Abaqus.html">
+                    <h3>Abaqus</h3>
+                    <p>Learn Abaqus functionality and usage through hands-on tutorials that apply real-world examples and practical cases.</p>
+                </a>
+            </div>			
+        </div>
+		<!--
+		<div class="row">
+            <div class="course-col">
+                <a href="theory.html">
+                    <h3>Theory</h3>
+                    <p>This section provides you with the fundamentals of the finite element method. We start from the very basics and summarise the key concepts that you will need for your exam.</p>
+                </a>
+            </div>
+            <div class="course-col">
+                 <a href="interactive.html">
+                    <h3>Interactive Simulations</h3>
+                    <p>Here you have the free reign to explore different configurations of spring and beam elements and see the effects of changing different inputs.</p>
+                </a>
+            </div>   
+            <div class="course-col">
+                <a href="guided1.html">
+                    <h3>Walk Through Questions</h3>
+                    <p>Once familiar with the content, go through some walk through questions to secure your understanding and familiarise yourself on how to solve questions.</p>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="course-col">
+                <a href="quiz.html">
+                    <h3>Quiz Yourself</h3>
+                    <p>Test your knowledge with quiz style questions with feedback on each question.</p>
+                </a>
+            </div>
+            <div class="course-col">
+                <a href="exam.html">
+                    <h3>Exam Style Assessment</h3>
+                    <p>Once you feel confident in both the theory and answering questions, take this assessment style questions to ensure you can do these questions in timed conditions. </p>
+                </a>
+            </div>
+            <div class="course-col">
+                <a href="further.html">
+                    <h3>Take it Further!</h3>
+                    <p>If you can solve these questions, you will be more than prepared for the exam.</p>
+                </a>
+            </div> 
+        </div>
+    -->
+	</section>
+
+    <section class="footer">
+        <h4>About US</h4>
+        <p>Author: Dinu Wijesiriwardena and Liyun Peng</p>
+    </section>
+
+    
+
+
+    <script>
+const sideBar = document.querySelector('.sideBar');
+const cross = document.getElementById('cross');
+const bar = document.getElementById('bar');
+
+function showSideBar() {
+    sideBar.style.display = 'flex';
+    bar.style.display = 'none';
+}
+function closeSideBar() {
+    sideBar.style.display = 'none';
+    bar.style.display = 'flex';
+}
+    </script>
+</body>
+</html>

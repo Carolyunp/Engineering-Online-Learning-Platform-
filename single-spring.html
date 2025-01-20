@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="scripts/navbar.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <link rel="stylesheet" href="styles/spring_sim.css">
+    <title>Spring simulation</title>
+</head>
+<body>
+    <h1 class="title">Single Spring Simulation:</h1>
+    <div class="canvas">
+        <canvas id="myCanvas" width="1000" height="300">
+            Your browser does not support the HTML canvas tag.
+        </canvas>
+    </div>
+
+    <div class="inputContainer">
+        <label for="force">Force:</label>
+        <input type="number" id="force" name="force" value="0"> N
+        <input type="range" id="forceSlider" name="forceSlider" value="0" min="-200" max="200">
+        <br>
+        <label for="springConstant">Spring Constant:</label>
+        <input type="number" id="springConstant" name="springConstant" value="10"> N/m
+        <input type="range" id="springConstantSlider" name="springConstantSlider" value="1" min="1" max="100" >
+    </div>
+    <div class="matrixContainer">
+        \[ \begin{bmatrix}
+            f_1 \\
+            f_2
+            \end{bmatrix} 
+            =
+         \begin{bmatrix}
+            k & -k \\
+            -k & k 
+            \end{bmatrix} 
+         \begin{bmatrix}
+            u_1 \\
+            u_2
+            \end{bmatrix} \]
+    </div>
+
+    <script src="scripts/spring_sim.js"></script>
+
+</body>
+</html>

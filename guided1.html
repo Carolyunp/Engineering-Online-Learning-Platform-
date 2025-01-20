@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <script src="scripts/navbar.js"></script>
+    <title>Walk Through Questions</title>
+    <style>
+
+      .imgContainer {
+            text-align: center;
+      }
+      .imgContainer img {
+            display: inline-block;
+      }
+      hr {
+        margin-top: 20px;
+      }
+      .displayContainer {
+        margin: 0 50px 0 50px;
+      }
+      #randomBTN {
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+      }
+      #randomBTN:hover {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.288);
+      }
+    </style>
+</head>
+<body>
+    <div class="displayContainer">
+
+    
+    <h1>Walk Through Question</h1>
+    <p class="problem">The beam shown in the figure below has fixed supports on both ends. It is supported with a roller support at the middle and there are forces applied onto the beam as shown in the figure below. </p>
+
+    <div class="imgContainer">
+      <img src="styles/images/guided1/walkthroughq1.png" alt="question" >
+    </div>
+
+    <h2>Tasks:</h2>
+    <ol>
+      <li>Mesh the Assembly</li>
+      <li>Vector of degrees of freedom x</li>
+      <li>Global stiffness matrix K</li>
+      <li>Joint load matrix A<sub>J</sub> and equivalent load matrix A<sub>E</sub> and combined load matrix A<sub>C</sub> = A<sub>J</sub> + A<sub>E</sub></li>
+      <li>Solve Kx = A<sub>C</sub></li>
+      <li>Find unknown reaction forces</li>
+    </ol>
+
+    <h2>Variables:</h2>
+    <table id="variablesTable">
+      <tr>
+        <td>P</td>
+        <td>=</td>
+        <td id="P">500 N</td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td>=</td>
+        <td id="E">200 GPa</td>
+      </tr>
+      <tr>
+        <td>I</td>
+        <td>=</td>
+        <td id="I">8000000 mm<sup>4</sup></td>
+      </tr>
+      <tr>
+        <td>L</td>
+        <td>=</td>
+        <td id="L">1 m</td>
+      </tr>
+    </table>
+    <button id="randomBTN" onclick="randomizeInputs()">Randomise Inputs</button>
+    
+    <div class="solution">
+      <h2>Solution:</h2>
+      <ol>
+        <li> 
+          <hr><p>The first step is to mesh the assembly appropriately:</p>
+          <p>In this step it is important to ensure that you choose a number of elements and nodes that is suitable for hand calculations.</p>
+          <div class="imgContainer">
+            <img src="styles/images/guided1/node_assembly1.png">
+          </div>
+          <p>Using a mesh like this result in 5 elements, 6 nodes and 12 degrees of freedom. This means a \((12 \times 12)\) \(\bold{K}\) matrix would need to be solved and that is not ideal.</p>
+          <p>Using a mesh like this however:</p>
+          <div class="imgContainer">
+            <img src="styles/images/guided1/node_assembly2.png">
+          </div>
+          <p>There are 3 elements, 4 nodes, 8 degrees of freedom and the stiffness matrix is a \((8 \times 8) \) which is easier to solve.</p>
+        </li>
+        <li><hr>
+          <p>The second step is to create a vector of DOFs:</p>
+          <div class="imgContainer">
+            <img src="styles/images/guided1/degrees_of_freedom.png">
+          </div>
+          <p>\[ \bold{x} = \begin {bmatrix}
+            v_1 & \theta_1 & v_2 & \theta_2 & v_3 & \theta_3 & v_4 & \theta_4 \end {bmatrix}^T \]
+            \[ \bold{x} = \begin {bmatrix}
+            0 & 0 & v_2 & \theta_2 & 0 & \theta_3 & 0 & 0 \end {bmatrix}^T \]
+          </p>
+        </li>
+        <li> 
+          <hr><p>The third step is to create the global stiffness matrix:</p>
+        <p>So, from the formula sheet, we know that the stiffness matrix for an element of length \(L\) and flexural rigidity \(EI\) is:
+          \[ \begin{bmatrix}\bold{K}^e\end{bmatrix} 
+            =
+            \frac{EI}{L^3}
+            \begin{bmatrix} 
+            12 & 6L & -12 & 6L \\
+            6L & 4L^2 & -6L & 2L^2 \\
+            -12 & -6L & 12 & -6L \\
+            6L & 2L^2 & -6L & 4L^2 
+            \end{bmatrix}
+            \]
+        </p>
+        <p>Now we need to apply this to each element:</p>
+        <p>Element 1: 
+          <p>As we can see, the 1st element has a length of L and a flexural rigidity of EI. Therefore:</p>
+          \[ \bold{K}^1_m 
+            =
+            \frac{EI}{L^3}
+            \begin{bmatrix} 
+            12 & 6L & -12 & 6L \\
+            6L & 4L^2 & -6L & 2L^2 \\
+            -12 & -6L & 12 & -6L \\
+            6L & 2L^2 & -6L & 4L^2 
+            \end{bmatrix}
+            \]
+        </p>
+        <p>Element 2:
+          <p>Element 2 however has a length of L and a flexural rigidity of 2EI so:</p>
+          \[ \bold{K}^2_m 
+            =
+            \frac{EI}{L^3}
+            \begin{bmatrix} 
+            24 & 12L & -24 & 12L \\
+            12L & 8L^2 & -12L & 4L^2 \\
+            -24 & -12L & 24 & -12L \\
+            12L & 4L^2 & -12L & 8L^2 
+            \end{bmatrix}
+            \]
+        </p>
+        <p>Element 3:
+          <p>Element 3 has a length of 2L and a flexural rigidity of 2EI so:</p>
+          \[ \bold{K}^3_m 
+            =
+            \frac{EI}{L^3}
+            \begin{bmatrix} 
+            3 & 3L & -3 & 3L \\
+            3L & 4L^2 & -3L & 2L^2 \\
+            -3 & -3L & 3 & -3L \\
+            6L & 2L^2 & -6L & 4L^2 
+            \end{bmatrix}
+            \]
+        </p>
+        <p>Now, the 3 element stiffness matrices can be combined to assemble the global stiffness matrix:
+          \[
+          [K] = \frac{EI}{L^3}
+          \begin{bmatrix}
+            12 & 6L & -12 & 6L & 0 & 0 & 0 & 0 \\
+            6L & 4L^2 & -6L & 2L^2 & 0 & 0 & 0 & 0 \\
+            -12 & -6L & 12 + 24 & -6L + 12L & -24 & 12L & 0 & 0 \\
+            6L & 2L^2 & -6L + 12L & 4L^2 + 8L^2 & -12L & 4L^2 & 0 & 0 \\
+            0 & 0 & -24 & -12L & 24 + 3 & -12L + 3L & -3 & 3L\\
+            0 & 0 & 12L & 4L^2 & -12L + 3L & 8L^2 + 4L^2 & -3L & 2L^2 \\
+            0 & 0 & 0 & 0 & -3 & -3L & 3 & -3L \\
+            0 & 0 & 0 & 0 & 6L & 2L^2 & -6L & 4L^2
+          \end{bmatrix}
+          \]
+        </p>
+        </li>
+        <li>
+          <hr>
+          Now the force matrix can be created:
+          <p>
+          First gathering the applied forces:</p>
+          \[
+          A_J^{Applied} = 
+          \begin{bmatrix} 
+          0 & 0 & -P & PL & -P & 0 & 0 & 0
+          \end{bmatrix}^T          
+          \]
+          <p>Then the reaction forces:
+            \[
+          A_J^{Reactions} = 
+          \begin{bmatrix} 
+          RF_1 & RM_1 & 0 & 0 & RF_3 & 0 & RF_4 & RM_4
+          \end{bmatrix}^T          
+          \]
+          </p>
+          <p>Then the work equivalent end loads can be calculated for each element:
+            <div class="imgContainer">
+              <img src="styles/images/formulas/formulas.png">
+            </div>
+          \[
+          \begin{array}{c|cccc}
+          \text{Element} & A_{mL1}^i & A_{mL2}^i & A_{mL3}^i & A_{mL4}^i \\
+          \hline
+          1 & -P & \frac{PL}{4} & -P & \frac{PL}{4} \\
+          2 & -P & \frac{PL}{4} & -P & \frac{PL}{4} \\
+          3 & -P & \frac{PL}{3} & -P & \frac{PL}{3} \\
+          \end{array}
+          \]
+          Therefore: 
+          \[
+          A_E = 
+          \begin{bmatrix}
+          -P & -PL/4 & -2P & 0 & -2P & -PL/12 & -P & PL/3 
+          \end{bmatrix} ^T
+          \]
+          </p>
+          <p>Now the combined force matrix can be determined:</p>
+          \[
+          A_C = \begin{bmatrix} 
+          RF_1 - P \\
+          RM_1 - \frac{PL}{4} \\
+          -3P \\
+          PL \\
+          RF_3 - 3P \\
+          -\frac{PL}{12} \\
+          RF_4 - P \\
+          RM_4 + \frac{PL}{3}
+          \end{bmatrix}
+          \]
+        </li>
+        <li>
+          <hr>
+          <p>
+            Now the equation \(Kx = A_C\) can be formed:
+          </p>
+          \[
+          \frac{EI}{L^3}
+          \begin{bmatrix}
+            12 & 6L & -12 & 6L & 0 & 0 & 0 & 0 \\
+            6L & 4L^2 & -6L & 2L^2 & 0 & 0 & 0 & 0 \\
+            -12 & -6L & 36 & 6L & -24 & 12L & 0 & 0 \\
+            6L & 2L^2 & 6L & 12L^2 & -12L & 4L^2 & 0 & 0 \\
+            0 & 0 & -24 & -12L & 27 & 9L & -3 & 3L\\
+            0 & 0 & 12L & 4L^2 & 9L & 12L^2 & -3L & 2L^2 \\
+            0 & 0 & 0 & 0 & -3 & -3L & 3 & -3L \\
+            0 & 0 & 0 & 0 & 6L & 2L^2 & -6L & 4L^2
+          \end{bmatrix}
+          \begin{bmatrix}
+            0 \\
+            0 \\
+            v_2 \\
+            \theta_2 \\
+            0 \\
+            \theta_3 \\
+            0 \\
+            0 \\
+          \end{bmatrix}
+          =
+          \begin{bmatrix} 
+          RF_1 - P \\
+          RM_1 - \frac{PL}{4} \\
+          -3P \\
+          PL \\
+          RF_3 - 3P \\
+          -\frac{PL}{12} \\
+          RF_4 - P \\
+          RM_4 + \frac{PL}{3}
+          \end{bmatrix}
+          \]
+          \[
+          \bold{x} = \frac{PL^2}{3024EI} \begin{bmatrix}
+          0 & 0 & -398L & 366 & 0 & 255 & 0 & 0
+          \end{bmatrix}^T 
+          \]
+          <p>Then the values can be substituted:</p>
+          <div id="equation">
+            \[
+            \bold{x} = \frac{500*1^2}{3024 * 2\times10^{11} * 8\times10^{-6}} 
+            \begin{bmatrix}
+              0 & 0 & -398 \times 1 & 366 & 0 & 255 & 0 & 0
+            \end{bmatrix}^T 
+          \]
+          \[\therefore v_2 = -4.11 \times 10^{-5} m\]
+          \[\therefore \theta_2 = 3.78 \times 10^{-5} rad\]
+          \[\therefore \theta_3 = 2.64 \times 10^{-5} rad\]
+          </div>
+        </li>
+        <li>
+          <hr>
+          Now these can be used to calculate the reaction forces:
+          \[
+          A_J^{Reactions} = \frac{P}{1008}
+          \begin{bmatrix} 
+          332 & 1292L & 0 & 0 & 3979 & 0 & 753 & -166L
+          \end{bmatrix}^T 
+          \]
+          <p>Substituting the values:</p>
+          <div id="reactionContainer">
+            \[
+            A_J^{Reactions} = \frac{500}{1008}
+            \begin{bmatrix} 
+            332 & 1292 \times 1 & 0 & 0 & 3979 & 0 & 753 & -166\times1
+            \end{bmatrix}^T 
+            \]
+            \[\therefore RF_1 = 165 N\]
+            \[\therefore RM_1 = 641 Nm\]
+            \[\therefore RF_3 = 1970 N\]
+            \[\therefore RF_4 = 374 N\]
+            \[\therefore RM_4 = -82.3 Nm\]
+          </div>
+        </li>
+      </ol>
+          
+
+    </div>
+  </div>
+
+  <script src="scripts/guided_q1.js"></script>
+</body>
+</html>

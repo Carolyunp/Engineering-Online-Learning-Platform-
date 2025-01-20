@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <script src="scripts/navbar.js"></script>
+    <title>Take it Further!</title>
+    <style>
+        .imgContainer {
+            text-align: center;
+      }
+      .imgContainer img {
+            display: inline-block;
+            width: 600px;
+      }
+      hr {
+        margin-top: 20px;
+      }
+      .displayContainer {
+        margin: 0 50px 0 50px;
+      }
+      button {
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+      }
+      button:hover {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.288);
+      }
+      .inputContainer {
+        width: 300px;
+        margin: auto auto;
+      }
+      input {
+        width: 100px;
+        height: 20px;
+        margin: 5px;
+        border-radius: 5px;
+      }
+      .result {
+        display: inline-block;
+        margin-left: 10px;
+      }
+      .inputWrapper {
+        display: flex;
+    } 
+    #errorMessage {
+        margin-bottom: 100px;
+    }
+    </style>
+</head>
+<body>
+    <div class="displayContainer">
+        <h1>Challenging Question:</h1>
+        <p class="problem">The beam shown in the figure below has fixed supports on the left end. It is supported with a pinned support at the middle and a spring support on the right end. There is a load \(P\) acting on the right side.</p>
+
+        <div class="imgContainer">
+        <img src="styles/images/further/question1.png" alt="question" >
+        </div>
+        <h2>Variables:</h2>
+        <table id="variablesTable">
+        <tr>
+            <td>P</td>
+            <td>=</td>
+            <td id="P">500 N</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>=</td>
+            <td id="E">210 GPa</td>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>=</td>
+            <td id="I">2\times10^{-4} m<sup>4</sup></td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>=</td>
+            <td id="L">1 m</td>
+        </tr>
+        <tr>
+            <td>k</td>
+            <td>=</td>
+            <td id="k">200 kN/m</td>
+        </tr>
+        </table>
+        <button id="randomBTN" onclick="randomizeInputs()">Randomise Inputs</button>
+        <div class="inputContainer">
+            <div class="inputContainer">
+                <label for="theta2">\( \theta_2 =\)</label>
+                <input type="number" id="theta2" name="theta2">
+                <span>\(\times 10^{-3} rad\)</span>
+            </div>
+            <span class="result" id="theta2_result"></span>
+            <div class="inputWrapper">
+                <label for="x3">\( x_3 =\)</label>
+                <input type="number" id="x3" name="x3">
+                <span>\(\times 10^{-3} m\)</span>
+            </div>
+            <span class="result" id="x3_result"></span>
+            <div class="inputContainer">
+                <label for="theta3">\( \theta_3 =\)</label>
+                <input type="number" id="theta3" name="theta3">
+                <span>\(\times 10^{-3} rad\)</span>
+            </div>
+            <span class="result" id="theta3_result"></span>
+            <div class="inputContainer">
+                <label for="RF1">\( RF_1 =\)</label>
+                <input type="number" id="RF1" name="RF1">
+                <span>\(N\)</span>
+            </div>
+            <span class="result" id="RF1_result"></span>
+            <div class="inputContainer">     
+                <label for="RM1">\( RM_1 =\)</label>
+                <input type="number" id="RM1" name="RM1">
+                <span>\(Nm\)</span>
+            </div>
+            <span class="result" id="RM1_result"></span>
+            <div class="inputContainer">
+                <label for="RF2">\( RF_2 =\)</label>
+                <input type="number" id="RF2" name="RF2">
+                <span>\(N\)</span>
+            </div>
+            <span class="result" id="RF2_result"></span>
+            <button onclick="checkAnswers()">Check</button>
+            <div id="errorMessage" style="color: red; display: none;">
+                Please refer back to the theory or walk-through questions.
+            </div>       
+        </div>
+            <div id="solution" style="display: none;">
+                <ol>
+                    <li> 
+                        <hr><p>The first step is to mesh the assembly appropriately:</p>
+                        <p>In this step it is important to ensure that you choose a number of elements and nodes that is suitable for hand calculations.</p>
+                        <div class="imgContainer">
+                          <img src="styles/images/further/question1_nodes.png">
+                        </div>
+                        </li>
+                        <li><hr>
+                            <p>The second step is to create a vector of DOFs:</p>
+                            <p>\[ \bold{x} = \begin {bmatrix}
+                              x_1 & \theta_1 & x_2 & \theta_2 & x_3 & \theta_3 & x_4 & \theta_4 \end {bmatrix}^T \]
+                              \[ \bold{x} = \begin {bmatrix}
+                              0 & 0 & 0 & \theta_2 & x_3 & \theta_3 & 0 & 0 \end {bmatrix}^T \]
+                            </p>
+                          </li>
+                          <li> 
+                            <hr><p>The third step is to create the global stiffness matrix:</p>
+                          <p>So, from the formula sheet, we know that the stiffness matrix for an element of length \(L\) and flexural rigidity \(EI\) is:
+                            \[ \begin{bmatrix}\bold{K}^e\end{bmatrix} 
+                              =
+                              \frac{EI}{L^3}
+                              \begin{bmatrix} 
+                              12 & 6L & -12 & 6L \\
+                              6L & 4L^2 & -6L & 2L^2 \\
+                              -12 & -6L & 12 & -6L \\
+                              6L & 2L^2 & -6L & 4L^2 
+                              \end{bmatrix}
+                              \]
+                          </p>
+                          <p>Apply this to each element:</p>
+                          <p><strong>Element 1:</strong>
+                            <p>As we can see, the 1st element has a length of L and a flexural rigidity of EI. Therefore:</p>
+                            \[ \bold{K}^1_m 
+                              =
+                              \frac{EI}{L^3}
+                              \begin{bmatrix} 
+                              12 & 6L & -12 & 6L \\
+                              6L & 4L^2 & -6L & 2L^2 \\
+                              -12 & -6L & 12 & -6L \\
+                              6L & 2L^2 & -6L & 4L^2 
+                              \end{bmatrix}
+                              \]
+                          <p>NOTE: This beam element stiffness matrix is 4x4 with each column representing \(x_1, \theta_1, x_2, \theta_2\)</p>
+                          </p>
+                          <br>
+
+                          <p><strong>Element 2:</strong>
+                            <p>Element 2 has a length of L and a flexural rigidity of EI so:</p>
+                            \[ \bold{K}^2_m 
+                              =
+                              \frac{EI}{L^3}
+                              \begin{bmatrix} 
+                              12 & 6L & -12 & 6L \\
+                              6L & 4L^2 & -6L & 2L^2 \\
+                              -12 & -6L & 12 & -6L \\
+                              6L & 2L^2 & -6L & 4L^2 
+                              \end{bmatrix}
+                              \]
+                          </p>
+                          <p>NOTE: This beam element stiffness matrix is 4x4 with each column representing \(x_2, \theta_2, x_3, \theta_3\)</p>
+                          <br>
+                          <p><strong>Element 3:</strong>
+                            <p>This is what makes this problem quite challenging. Element 3 is a spring element so recall that:</p>
+                            \[ \bold{K} 
+                              =
+                              \begin{bmatrix} 
+                              k & -k \\
+                              -k & k
+                              \end{bmatrix}
+                              \]
+                              <p>As the aim is to create a global stiffness matrix, we can rewrite this using \(k' = \frac{L^3}{EI}\):</p>
+                              \[ \bold{K}^3_m 
+                              =
+                              \frac{EI}{L^3}
+                              \begin{bmatrix} 
+                              k' & -k' \\
+                              -k' & k'
+                              \end{bmatrix}
+                              \]
+                              <p>As mentioned before, a beam element stiffness matrix, the columns represent \(x_i, \theta_i, x_{i+1}, \theta_{i+1}\)</p>
+                              <p>The spring element is a 2x2 stiffness matrix which represents \(x_i, x_{i+1}\). In this case \(x_3, x_4\) therefore that needs to be considered when creating the global stiffness matrix.</p>
+                          </p>
+                          <br>
+                          <p>The 3 element stiffness matrices can be combined to assemble the global stiffness matrix:
+                            \[
+                            [K] = \frac{EI}{L^3}
+                            \begin{bmatrix}
+                              12 & 6L & -12 & 6L & 0 & 0 & 0 & 0 \\
+                              6L & 4L^2 & -6L & 2L^2 & 0 & 0 & 0 & 0 \\
+                              -12 & -6L & 24 & 0 & -12 & 6L & 0 & 0 \\
+                              6L & 2L^2 & 0 & 8L^2 & -6L & 2L^2 & 0 & 0 \\
+                              0 & 0 & -12 & -6L & 12+k' & -6L & -k' & 0\\
+                              0 & 0 & 6L & 2L^2 & -6L & 4L^2 & -0 & 0 \\
+                              0 & 0 & 0 & 0 & k' & 0 & k' & 0 \\
+                              0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+                            \end{bmatrix}
+                            \]
+                          </p>
+                          </li>
+                          <li>
+                            <hr>
+                            Now the force matrix can be created:
+                            <p>
+                            First gathering the applied forces:</p>
+                            \[
+                            A_J^{Applied} = 
+                            \begin{bmatrix} 
+                            0 & 0 & 0 & 0 & -P & 0 & 0 & 0
+                            \end{bmatrix}^T          
+                            \]
+                            <p>Then the reaction forces:
+                              \[
+                            A_J^{Reactions} = 
+                            \begin{bmatrix} 
+                            RF_1 & RM_1 & RF_2 & 0 & 0 & 0 & 0 & 0
+                            \end{bmatrix}^T          
+                            \]
+                            </p>
+                            </li>
+                            <li>
+                                <hr>
+                                <p>
+                                  Now the equation \(Kx = A_C\) can be formed:
+                                </p>
+                                \[
+                                \frac{EI}{L^3}
+                                \begin{bmatrix}
+                                12 & 6L & -12 & 6L & 0 & 0 & 0 & 0 \\
+                                6L & 4L^2 & -6L & 2L^2 & 0 & 0 & 0 & 0 \\
+                                -12 & -6L & 24 & 0 & -12 & 6L & 0 & 0 \\
+                                6L & 2L^2 & 0 & 8L^2 & -6L & 2L^2 & 0 & 0 \\
+                                0 & 0 & -12 & -6L & 12+k' & -6L & -k' & 0\\
+                                0 & 0 & 6L & 2L^2 & -6L & 4L^2 & -0 & 0 \\
+                                0 & 0 & 0 & 0 & k' & 0 & k' & 0 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+                                \end{bmatrix}
+                                \begin{bmatrix}
+                                  0 \\
+                                  0 \\
+                                  0 \\
+                                  \theta_2 \\
+                                  x_3 \\
+                                  \theta_3 \\
+                                  0 \\
+                                  0 \\
+                                \end{bmatrix}
+                                =
+                                \begin{bmatrix} 
+                                RF_1 \\
+                                RM_1\\
+                                RF_2\\
+                                0 \\
+                                -P \\
+                                0\\
+                                0 \\
+                                0
+                                \end{bmatrix}
+                                \]
+                                <p>Then the unknowns can be calculated:</p>
+                                <div id="equation"></div>
+                                <div id="reactionContainer"></div>
+                              </li>
+
+                </ol>
+            </div>
+    </div>
+    <script src="scripts/further_q1.js"></script>
+</body>
+</html>

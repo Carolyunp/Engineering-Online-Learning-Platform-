@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="styles/theory.css">
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <script src="scripts/navbar.js"></script>
+    <title>Theory</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+        img {
+            display: inline-block;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>  
+    <h2>Formulas:</h2>
+    <ol>
+        <li>
+            Spring Element Stiffness Matrix:
+            \[
+            \begin{bmatrix}
+            \bold{K}
+            \end{bmatrix}^e
+            =
+            \begin{bmatrix}
+            k & -k \\
+            -k & k
+            \end{bmatrix}
+            \]
+        </li>
+        <li>
+            Beam Element Stiffness Matrix:
+            \[
+            \begin{bmatrix}
+            \bold{K}
+            \end{bmatrix}^e
+            =
+            \frac{EI}{L^3}
+            \begin{bmatrix}
+            12 & 6L & -12 & 6L \\
+            6L & 4L^2 & -6L & 2L^2 \\
+            -12 & -6L & 12 & -6L \\
+            6L & 2L^2 & -6L & 4L^2
+            \end{bmatrix}
+            \]
+        </li>
+        <li>
+            Beam Element Shape Functions: 
+            \[
+            \bold{N^T}(\zeta)
+            =
+            \begin{bmatrix}
+            1 - \frac{3\zeta^2}{L^2} + \frac{2\zeta^3}{L^3} \\
+            \zeta - \frac{2\zeta^2}{L} + \frac{\zeta^3}{L^2} \\
+            \frac{3\zeta^2}{L^2} - \frac{2\zeta^3}{L^3} \\
+            -\frac{\zeta^2}{L} + \frac{\zeta^3}{L^2}
+            \end{bmatrix} 
+            =
+            \begin{bmatrix} 
+            1 & 0 & -3/L^2 & 2/L^3 \\
+            0 & 1 & -2/L & 1/L^2 \\
+            0 & 0 & 3/L^2 & -2/L^3 \\
+            0 & 0 & -1/L & 1/L^2
+            \end{bmatrix}
+            \begin{bmatrix} 
+            1 \\
+            \zeta \\
+            \zeta^2 \\
+            \zeta^3
+            \end{bmatrix}
+            \]
+        </li>
+        <li>
+            Work-equivalent end loads:
+            \[
+            \bold{A}_{mE} 
+            = 
+            \int^L_0
+            p(\zeta) \bold{N^T}(\zeta)d\zeta
+            \]
+        </li>
+        <li>
+            Work-equivalent end loads of typical loads:
+        </li>
+        <div class="container">
+            <img src="styles/images/formulas/formulas.png">
+        </div>
+    </ol>
+
+    
+</body>
+</html>

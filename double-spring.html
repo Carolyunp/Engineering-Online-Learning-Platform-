@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <script src="scripts/navbar.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1091eb4c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/spring_sim.css">
+    <script>document.addEventListener("DOMContentLoaded", ()=> {renderMathInElement(document.body)});</script>
+    <title>Double Spring simulation</title>
+</head>
+<body>
+    <h1 class="title">Double Spring Simulation:</h1>
+    <div class="canvas">
+        <canvas id="myCanvas" width="1000" height="300" style="border: 1px solid #000000;">
+            Your browser does not support the HTML canvas tag.
+        </canvas>
+    </div>
+
+    <div class="inputContainer">
+        <label for="f2">f1:</label>
+        <input type="number" id="f2" name="f2" value="0"> N
+        <input type="range" id="f2Slider" name="f2Slider" value="0" min="-200" max="200">
+        <br>
+        <label for="f1">f2:</label>
+        <input type="number" id="f1" name="f1" value="0"> N
+        <input type="range" id="f1Slider" name="f1Slider" value="0" min="-200" max="200">
+        <br>
+        <label for="k1">k1:</label>
+        <input type="number" id="k1" name="k1" value="10"> N/m
+        <input type="range" id="k1Slider" name="k1Slider" value="10" min="1" max="100" >
+        <br>
+        <label for="k2">k2:</label>
+        <input type="number" id="k2" name="k2" value="10"> N/m
+        <input type="range" id="k2Slider" name="k2Slider" value="10" min="1" max="100" >
+    </div>
+    <div class="matrixContainer" style="padding: 10px">
+        \[ \begin{bmatrix}
+            f_1 \\
+            f_2 \\
+            f_3
+            \end{bmatrix} 
+            =
+         \begin{bmatrix}
+            k_1 & -k_1 & 0 \\
+            -k_1 & k_1 + k_2 & -k_2 \\
+            0 & -k_2 & k_2 
+            \end{bmatrix} 
+         \begin{bmatrix}
+            u_1 \\
+            u_2 \\
+            u_3
+            \end{bmatrix} \]  
+    </div>
+
+    <script src="scripts/double_spring.js"></script>
+
+</body>
+</html>
